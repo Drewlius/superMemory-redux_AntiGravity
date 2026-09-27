@@ -6,6 +6,9 @@
   
   // The container tag isolates memories (e.g., your username or project name or agent harness) different tags do not share memories and are isolated from each other tag.
   "containerTag": "antigravity-workspace",
+
+    // Replace with your host and server if you are running the system offline
+  "baseUrl": "https://api.supermemory.ai"
   
   // Optional settings (defaults shown):
   // "similarityThreshold": 0.6,
