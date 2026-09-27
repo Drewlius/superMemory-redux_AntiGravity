@@ -1,0 +1,21 @@
+{
+  "name": "superMemory-redux_AntiGravity",
+  "version": "0.2.1",
+  "description": "Clean supermemory plugin for OpenCode — follows the docs, nothing more",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir ./dist --target node && tsc --emitDeclarationOnly",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": ["opencode", "supermemory", "plugin", "memory"],
+  "license": "MIT",
+  "dependencies": {
+    "supermemory": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "typescript": "^5.7.3"
+  }
+}

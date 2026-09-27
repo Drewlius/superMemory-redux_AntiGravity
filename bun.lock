@@ -1,0 +1,25 @@
+{
+  "lockfileVersion": 2,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "superMemory-redux_AntiGravity",
+      "dependencies": {
+        "supermemory": "^4.0.0",
+      },
+      "devDependencies": {
+        "@types/node": "^26.1.2",
+        "typescript": "^5.7.3",
+      },
+    },
+  },
+  "packages": {
+    "@types/node": ["@types/node@26.6.3", "", { "dependencies": { "undici-types": "~8.9.0" } }, "sha512-dsqMQQoeTLqu9wynDD00q573mNzso3IdQOAfHRJqLCcmCFPoGo9A1bDpUcv/9tnKpErQWv9uKeGfl37EIS02Yg=="],
+
+    "supermemory": ["supermemory@4.25.4", "", { "bin": { "supermemory": "bin/cli" } }, "sha512-97ME3rlmu7OmsXJTb9OgXOD+3VUv4Wej0ZX9xezG+LKkMwrzi4xeeAZaOJFcr0oI/QQjcHG2WOzm+und1e7MFA=="],
+
+    "typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
+
+    "undici-types": ["undici-types@8.9.0", "", {}, "sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg=="],
+  }
+}

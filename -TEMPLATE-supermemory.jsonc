@@ -1,0 +1,14 @@
+{
+  // Antigravity SuperMemory Configuration
+  
+  // Replace with your actual Supermemory API Key
+  "apiKey": "YOUR_API_KEY_HERE",
+  
+  // The container tag isolates memories (e.g., your username or project name or agent harness) different tags do not share memories and are isolated from each other tag.
+  "containerTag": "antigravity-workspace",
+  
+  // Optional settings (defaults shown):
+  // "similarityThreshold": 0.6,
+  // "maxMemories": 3,
+  // "injectProfile": true
+}
