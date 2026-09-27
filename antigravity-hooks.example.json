@@ -1,0 +1,19 @@
+{
+  "supermemory-logger": {
+    "enabled": true,
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "/usr/bin/bun run /home/slippy/.gemini/config/plugins/superMemory-redux_AntiGravity/dist/index.js",
+        "timeout": 10
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "/usr/bin/bun run /home/slippy/.gemini/config/plugins/superMemory-redux_AntiGravity/dist/index.js",
+        "timeout": 10
+      }
+    ]
+  }
+}
