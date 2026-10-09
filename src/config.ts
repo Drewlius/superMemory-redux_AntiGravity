@@ -159,10 +159,14 @@ export function loadConfig(): Config {
     );
   }
 
-  const baseUrl = fileConfig?.baseUrl ?? DEFAULT_BASE_URL;
-  if (typeof baseUrl !== "string") {
+  const rawBaseUrl = fileConfig?.baseUrl ?? DEFAULT_BASE_URL;
+  if (typeof rawBaseUrl !== "string") {
     throw new Error("baseUrl must be a string");
   }
+  const baseUrl = (!rawBaseUrl.startsWith("http://") && !rawBaseUrl.startsWith("https://")) 
+    ? "http://" + rawBaseUrl 
+    : rawBaseUrl;
+    
   let parsedBaseUrl: URL;
   try {
     parsedBaseUrl = new URL(baseUrl);

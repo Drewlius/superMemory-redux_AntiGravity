@@ -135,10 +135,27 @@ async function main() {
 
   if (isStopHook) {
     // Ingest conversation
+    let lastUserIndex = -1;
+    for (let i = chatHistory.length - 1; i >= 0; i--) {
+      if (chatHistory[i].source === "USER_EXPLICIT") {
+        lastUserIndex = i;
+        break;
+      }
+    }
+    
+    if (lastUserIndex === -1) {
+      console.log(JSON.stringify({}));
+      return;
+    }
+    
+    const turnMessages = chatHistory.slice(lastUserIndex);
     const conversationMessages = [];
-    for (const msg of chatHistory) {
+    for (const msg of turnMessages) {
       if (msg.source === "USER_EXPLICIT" && msg.content) {
-        conversationMessages.push({ role: "user", content: msg.content });
+        // Strip out the Antigravity XML tags (<USER_REQUEST> and <ADDITIONAL_METADATA>)
+        const match = msg.content.match(/<USER_REQUEST>([\s\S]*?)<\/USER_REQUEST>/);
+        const cleanContent = match ? match[1].trim() : msg.content.trim();
+        conversationMessages.push({ role: "user", content: cleanContent });
       } else if (msg.source === "MODEL" && msg.type === "PLANNER_RESPONSE") {
         const text = msg.content || "";
         if (text) {
@@ -149,21 +166,17 @@ async function main() {
 
     if (conversationMessages.length > 0) {
       try {
-        const res = await fetch(`${config.baseUrl.replace(/\/$/, "")}/v4/conversations`, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${config.apiKey}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            conversationId: `session_${payload.conversationId}`,
-            messages: conversationMessages,
-            containerTags: [config.containerTag],
-            metadata: { source: "antigravity", model: payload.modelName },
-          }),
+        const conversationText = conversationMessages.map(m => `${m.role.toUpperCase()}: ${m.content}`).join("\n\n");
+        await sm.add({
+          content: conversationText,
+          customId: `session_${payload.conversationId}`,
+          containerTag: config.containerTag,
+          metadata: { source: "antigravity", model: payload.modelName },
+          // @ts-ignore
+          dreaming: "dynamic"
         });
       } catch (e) {
-        console.error("Ingest error:", e);
+        require("node:fs").appendFileSync("/tmp/sm_debug.log", `Fetch exception: ${e}\n`);
       }
     }
     console.log(JSON.stringify({}));
