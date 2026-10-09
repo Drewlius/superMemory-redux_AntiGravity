@@ -1,5 +1,5 @@
 [![wakatime](https://wakatime.com/badge/github/Drewlius/Supermemory-redux_AntiGravity.svg)](https://wakatime.com/badge/github/Drewlius/superMemory-redux_AntiGravity)
-# oc-supermemory-redux (Antigravity Hook Integration)
+# supermemory-redux (Antigravity Integration)
 
 A focused [Supermemory](https://supermemory.ai/docs) plugin for Google Antigravity. It implements Antigravity's `hooks.json` contract to intercept user turns and inject memory context, as well as seamlessly stream conversation logs to the Supermemory backend.
 
@@ -48,7 +48,7 @@ Antigravity executes scripts via the `hooks.json` configuration file. After buil
 }
 ```
 
-*Note: Replace `/path/to/oc-supermemory-redux/dist/index.js` with the absolute path to your cloned repository.* Usually, it is going to be `~/.gemini/config/plugins/superMemory-redux_AntiGravity`
+*Note: Replace `/path/to/supermemory-redux/dist/index.js` with the absolute path to your cloned repository.* Usually, it is going to be `~/.gemini/config/plugins/superMemory-redux_AntiGravity`
 
 ## Configuration
 
